@@ -1,0 +1,99 @@
+// barra lateral derecha del chat
+.groupinfo
+    background: $tertiaryC
+.groupinfo__container
+    padding: 3rem
+.groupinfo__description
+    margin-top: 3rem
+
+// mensajes del chat
+.messages__container
+    position: relative
+    height: 50rem
+    padding: 3rem
+@media (min-width: 1500px)
+    .messages__container
+        height: 75rem
+.messages__list
+    height: 38rem
+    overflow-y: auto
+    margin: 1rem 1rem
+    padding: 1rem
+@media (min-width: 1500px)
+    .messages__list
+        height: 60rem
+// modificando el scroll
+.messages__list::-webkit-scrollbar
+    width: .5rem
+.messages__list::-webkit-scrollbar-thumb
+    background: $principalC
+    border-radius: 5rem
+.messages__list::-webkit-scrollbar-track
+    margin-right: 1rem
+
+
+.message
+    margin-bottom: 2rem
+    display: flex
+.message__body
+    margin-left: 2rem
+    display: flex
+    flex-direction: column
+.message__date
+    margin-left: 4rem
+    font-weight: 300
+.message--welcome
+    display: flex
+    flex-direction: column
+    align-items: center
+    border-bottom: 2px solid rgba($principalC, 0.6)
+    padding-bottom: 1rem
+
+// formulario de enviar mensaje
+.formdefault--messages
+    position: absolute
+    bottom: 0
+.formdefault
+    margin: auto
+.formdefault-100
+    width: 100%
+.formdefault__group
+    display: flex
+    flex-direction: row
+    align-items: center
+    width: 90%
+.formdefault__input
+    padding: 1rem 4rem
+    width: 100%
+    border: none
+    background: $tertiaryC
+    outline: none
+    border-radius: .5rem
+    color: $letterC
+.formdefault--messages-btn
+    border-radius: 100%
+    font-size: 1.5rem
+
+// sección de miembros 
+.members
+    height: 30rem
+    overflow-x: hidden
+@media (min-width: 1500px)
+    .members
+        height: 40rem
+// modificando el scroll
+.members::-webkit-scrollbar
+    width: .5rem
+.members::-webkit-scrollbar-thumb
+    background: $secondaryC
+    border-radius: 5rem
+.members::-webkit-scrollbar-track
+    margin-right: 1rem
+.member
+    margin: 1.5rem 0
+    display: flex
+    align-items: center
+.members--add
+    height: 15rem
+    overflow-x: auto
+    

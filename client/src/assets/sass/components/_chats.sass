@@ -1,0 +1,44 @@
+.chats
+    background: $tertiaryC
+.chats__container
+    height: 50rem
+    overflow-y: auto
+    margin: 1rem 1rem
+    padding: 1rem
+@media (min-width: 1500px)
+    .chats__container
+        height: 70rem
+// modificando el scroll
+.chats__container::-webkit-scrollbar
+    width: .5rem
+.chats__container::-webkit-scrollbar-thumb
+    background: $secondaryC
+    border-radius: 5rem
+.chats__container::-webkit-scrollbar-track
+    margin-right: 1rem
+// componente de chat
+.chat
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    width: 100%
+    background: $principalC
+    border-radius: .6rem
+    padding: 2rem
+    cursor: pointer
+    margin-bottom: 1rem
+    &:hover
+        background: rgba($principalC, .8)
+.chat__info
+    display: flex
+    flex-direction: column
+.chat__img
+    border-radius: .5rem
+    width: 4rem
+    margin-right: 1.5rem
+.chat__message
+    color: rgba($letterC, 0.5)
+
+
+
+

@@ -1,0 +1,53 @@
+<div class="row allheight">
+
+
+    <div class="col-md-3 allheight section chats">
+          <div class="section__head">
+                <img src="assets/img/chat.svg" class="section__head-img--smaller">
+                <span class="section__head-text ml-3">Chats</span>
+            </div>
+
+            <!-- CONTENDROR DEL LISTADO DE CHATS -->
+            <div class="chats__container">
+
+                
+                <div class="drawing" *ngIf="chats && chats.length <= 0">
+                    <img src="assets/img/empty2.svg" class="section__head-img drawing__img">
+                    <span class="drawing__text">No chats</span>
+                </div>
+                
+
+                <div class="chats" *ngIf="chats">
+
+                    <div class="chat" *ngFor="let chat of chats" (click)="selectChat(chat._id)">
+                        <img src="assets/img/group.svg" alt="logo de la app" class="chat__img">
+
+                        <div class="chat__info">
+                            <span class="chat__title">{{ chat.title }}</span>
+                            <span class="chat__message">Group created at: {{ (chat.created_at | amFromUnix) | amTimeAgo }}</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- CONTENDROR DEL LISTADO DE CHATS -->
+
+    </div>
+
+    <!-- CHAT DE MENSAJES -->
+    <div class="col-md-9 allheight">
+        <app-chat [chat]="chat" [user]="user" [members]="members"></app-chat>
+    </div>
+    <!-- CHAT DE MENSAJES -->
+
+</div>
+
+
+<!-- Modal de creación de nuevo chat -->
+<app-create-chat (getAllChats)="getMyChats()"></app-create-chat>
+
+
+<!-- Modal para editar mi usuario-->
+<app-edit-user></app-edit-user>

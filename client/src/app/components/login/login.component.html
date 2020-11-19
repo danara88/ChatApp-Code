@@ -1,0 +1,53 @@
+<form 
+#loginF = "ngForm"
+(ngSubmit)="onSubmit()"
+class="formd formd--gray formd-40 animated fadeInRight">
+    <div class="formd__head">
+        <img src="assets/img/logo.png" alt="logo de la app" class="section__head-img">
+        <h1 class="formd__head-title"><span class="red">EL</span>chat</h1>
+    </div>
+
+     <!-- Alerta -->
+    <app-alert  [status]="status" [alertMessage]="alertMessage"></app-alert>
+    <!-- Alerta -->
+
+     <!-- Nombre de usuario -->
+     <div class="formd__group">
+        <input type="text" class="formd__input" 
+        placeholder="Insert your nickname"
+        name = "username"
+        #username = "ngModel"
+        [(ngModel)]="user.username"
+        required>
+    </div>
+
+     <!-- Contraseña  -->
+     <div class="formd__group">
+        <input type="password" class="formd__input" 
+        placeholder="Insert a password"
+        name = "password"
+        #password = "ngModel"
+        [(ngModel)]="user.password"
+        required
+        >
+    </div>
+
+     <!-- aviso  -->
+     <div class="formd__group form__group--auto" *ngIf="!loader">
+       <span class="formd__group-text">Without an account? <a [routerLink]="['/register']" class="text-primary ml-2">Sign up here</a></span>
+    </div>
+
+      <!-- boton  -->
+      <div class="formd__group form__group--auto mt-3">
+        <button *ngIf="!loader" type="submit" class="formd__btn" [ngClass]="{ 'disabledbtn': !loginF.form.valid}" [disabled]="!loginF.form.valid">Go!</button>
+ 
+          <!-- Boton spinner -->
+         <button *ngIf="loader" class="formd__btn diasbleddefault disabledbtn" type="button" disabled>
+             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+             <span class="ml-3">Processing</span>
+         </button>
+         <!-- Boton spinner -->
+     </div>
+
+</form>
+

@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row allheight">
+
+        <div class="col-md-1 allheight section menu"  *ngIf="identity && token">
+            <!-- Logo -->
+            <div class="section__head section__head--pointer">
+                <img src="assets/img/logo.png" alt="logo de la app" class="section__head-img">
+            </div>
+
+            <!-- Menu -->
+            <app-navbar></app-navbar>
+             <!-- Menu -->
+             
+
+        </div>
+
+        <div class="col-md-11 allheight">
+            <router-outlet></router-outlet>
+        </div>
+       
+    </div>
+</div>
+
+
+

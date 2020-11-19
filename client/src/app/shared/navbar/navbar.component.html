@@ -1,0 +1,19 @@
+<!-- Menu principal -->
+<div class="menu__options">
+    <a [routerLink]="['/home']" class="menu__option" [routerLinkActive]="['menu__option--active']">
+        <i class="fas fa-home menu__option-icon"></i>
+    </a>
+
+    <a onclick="document.getElementById('id02').style.display='block'" class="menu__option">
+        <i class="fas fa-user menu__option-icon"></i>
+    </a>
+
+    <a onclick="document.getElementById('id01').style.display='block'" class="menu__option">
+        <i class="fas fa-plus menu__option-icon"></i>
+    </a>
+
+    <a (click)="logout()" class="menu__option">
+        <i class="fas fa-sign-out-alt menu__option-icon"></i>
+    </a>
+
+</div>

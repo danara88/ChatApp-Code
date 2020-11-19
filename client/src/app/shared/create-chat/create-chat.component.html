@@ -1,0 +1,139 @@
+<div id="id01" class="w3-modal">
+
+    <div class="w3-modal-content modaldefault animated fadeIn">
+      <div class="w3-container">
+
+        <div class="modaldefault__head">
+            <h4 class="modaldefault__title">
+                <img src="assets/img/chat.svg" alt="" class="section__head-img">
+                Create new chat
+            </h4>
+            <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        </div>
+
+        <div class="modaldefault__body">
+
+            <!-- Formulario para crear un chat -->
+            <form 
+                #createChat="ngForm"
+                (ngSubmit)="onSubmit('createChat')"
+                *ngIf="!next1"
+                class="formd formd--gray formd-100 formd--notmargin">
+            
+            
+                 <div class="formd__group">
+                    <input type="text" class="formd__input" placeholder="Give a name to your new chat"
+                        name="title"
+                        #title="ngModel"
+                        [(ngModel)]="chat.title"
+                        required
+                    >
+                </div>
+
+                <!-- <div class="members members--add">
+                    <div class="member">
+                        <img src="assets/img/man.svg" alt="" class="chat__img">
+                        <span class="member__username">daniboy88</span>
+                    </div>
+                    <div class="member">
+                        <img src="assets/img/man.svg" alt="" class="chat__img">
+                        <span class="member__username">daniboy88</span>
+                    </div>
+                    <div class="member">
+                        <img src="assets/img/man.svg" alt="" class="chat__img">
+                        <span class="member__username">daniboy88</span>
+                    </div>
+                    <div class="member">
+                        <img src="assets/img/group.svg" alt="" class="chat__img">
+                        <span class="member__username">daniboy88</span>
+                    </div>
+                    <div class="member">
+                        <img src="assets/img/man.svg" alt="" class="chat__img">
+                        <span class="member__username">daniboy88</span>
+                    </div>
+                    <div class="member">
+                        <img src="assets/img/man.svg" alt="" class="chat__img">
+                        <span class="member__username">daniboy88</span>
+                    </div>
+                </div> -->
+            
+                
+                 <div class="formd__group">
+                    <textarea  class="formd__input formd__textarea" placeholder="What is your chat about?"
+                    name="description"
+                    #description="ngModel"
+                    [(ngModel)]="chat.description"
+                    required
+                    ></textarea>
+                </div>
+            
+    
+            
+                 <!-- Nombre  -->
+                 <div class="formd__group form__group--auto mt-3">
+                   <button type="submit" class="formd__btn" *ngIf="!loader" [ngClass]="{ 'disabledbtn': !createChat.form.valid}" [disabled]="!createChat.form.valid">Create chat and continue</button>
+
+                     <!-- Boton spinner -->
+                     <button *ngIf="loader" class="formd__btn diasbleddefault disabledbtn" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        <span class="ml-3">Processing</span>
+                    </button>
+                     <!-- Boton spinner -->
+
+                </div>
+
+                 
+            
+            </form>
+            <!-- Formulario para crear un chat -->
+
+            <!-- Fromulario para agregar miembros -->
+            <div class="formd formd--gray formd-100 formd--notmargin animated fadeIn" *ngIf="next1">
+
+                <div class="formd__group">
+                    <input type="text" #data class="formd__input" placeholder="Search for members" (keyup)="searchUsers(data.value)">
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="groupinfo__title mt-2">Resultados</div>
+                                <div *ngIf="users && users.length">
+                                    <div class="member" *ngFor="let user of users">
+                                        <img src="assets/img/man.svg" alt="" class="chat__img">
+                                        <span class="member__username">{{ user.username }}</span>
+                                        <button class="btn btn-primary ml-auto" (click)="addMember(user._id)" *ngIf="!loaderAdded">Agregar</button>
+                                        <!-- Boton spinner -->
+                                        <button *ngIf="loaderAdded" class="btn btn-primary ml-auto" type="button" disabled>
+                                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                        </button>
+                                        <!-- Boton spinner -->
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="groupinfo__title mt-2">Agregados</div>
+                            <div class="member" *ngFor="let member of selectedMembers">
+                                <img src="assets/img/man.svg" alt="" class="chat__img">
+                                <span class="member__username">{{ member.user.username }}</span>
+                                <i class="fas fa-times ml-auto pointer" (click)="removeMember(member._id)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                   
+                <!-- Nombre  -->
+                <div class="formd__group form__group--auto mt-3">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'"  (click)="next1 = !next1" class="formd__btn">Aceptar</button>
+                 </div>
+
+               </div>     
+            <!-- Fromulario para agregar miembros -->
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>

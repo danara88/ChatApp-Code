@@ -1,0 +1,95 @@
+<div id="id02" class="w3-modal">
+
+    <div class="w3-modal-content modaldefault animated fadeIn">
+      <div class="w3-container">
+
+        <div class="modaldefault__head">
+            <h4 class="modaldefault__title">
+                <img src="assets/img/cog.svg" alt="" class="section__head-img">
+                Settings
+            </h4>
+            <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        </div>
+
+        <div class="modaldefault__body">
+
+
+
+             <!-- Formulario para editar información del usuario -->
+             <form 
+              #editUser="ngForm"
+              (ngSubmit)="onSubmit()"
+              class="formd formd--gray formd-100 formd--notmargin">
+
+                <!-- Alerta -->
+                <app-alert [status]="status" [alertMessage]="alertMessage"></app-alert>
+                <!-- Alerta --> 
+              
+              <div class="formd__group-head">
+
+                <img src="assets/img/man.svg" alt="Imagen default" *ngIf="!identity.image && !imgSelected" class="section__head-img formd__edit-img">
+
+                <img src="{{ url + '/api/user/image/' + identity.image }}" *ngIf="identity.image && !imgSelected" class="section__head-img formd__edit-img">
+
+                <div *ngIf="imgSelected">
+                  <img src="{{ imgSelected || url + '/api/user/image/' + identity.image }}"  class="section__head-img formd__edit-img">
+                </div>
+             
+                <input type="file" name="file0" id="realFile" hidden="hidden" (change)="fileChange($event)">
+                <button type="button" id="customButton" class="formd__btn--outline my-2" (click)=" clickFakeInput()"><i class="fas fa-camera"></i></button>
+                <span id="customText">No image selected</span>
+
+                <script>
+                 
+                </script>
+
+              </div>
+          
+         
+              <div class="formd__group">
+                 <input type="text" class="formd__input" placeholder="Insert your name"
+                     name="name"
+                     #name="ngModel"
+                     [(ngModel)]="user.name"
+                     required
+                 >
+             </div>
+         
+             
+             <div class="formd__group">
+              <input type="text" class="formd__input" placeholder="Insert your nickname"
+                  name="username"
+                  #username="ngModel"
+                  [(ngModel)]="user.username"
+                  required
+              >
+             </div>
+         
+ 
+         
+            
+              <div class="formd__group form__group--auto mt-3">
+                <button type="submit" class="formd__btn" *ngIf="!loader" [ngClass]="{ 'disabledbtn': !editUser.form.valid}" [disabled]="!editUser.form.valid">Save</button>
+
+                  <!-- Boton spinner -->
+                  <button *ngIf="loader" class="formd__btn diasbleddefault disabledbtn" type="button" disabled>
+                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                     <span class="ml-3">Processing</span>
+                 </button>
+                  <!-- Boton spinner -->
+
+             </div>
+
+              
+         
+         </form>
+         <!-- Formulario para crear un chat -->
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+

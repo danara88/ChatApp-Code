@@ -1,0 +1,9 @@
+<div class="alertdefault alertdefault--success animated fadeIn fast" *ngIf="status && alertMessage && status === 'success'">
+    <i class="alertdefault__icon fas fa-check mr-2"></i>
+    <span class="alertdefault__text">{{ alertMessage }}</span>
+</div>
+
+<div class="alertdefault alertdefault--danger animated fadeIn fast" *ngIf="status && alertMessage && status === 'error'">
+    <i class="alertdefault__icon fas fa-times mr-2"></i>
+    <span class="alertdefault__text">{{ alertMessage }}</span>
+</div>

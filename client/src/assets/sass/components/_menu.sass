@@ -1,0 +1,22 @@
+.menu
+    background: $principalC
+.menu__options
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-top: 49%
+.menu__option
+    background: $secondaryC
+    color: $redC
+    padding: 2rem
+    text-align: center
+    margin: 1.5rem 0
+    border-radius: .4rem
+    width: 7rem
+    transition: all 0.2s ease
+    cursor: pointer
+    &:hover
+        color: $redC
+        transform: scale(0.8)
+.menu__option--active 
+    border-left: 2px solid $redC
